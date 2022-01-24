@@ -10,14 +10,13 @@ jobs:
       - run:
           name: SSH
           command: |
-            cd ..
-            cd ..
-            cd tmp && cd rom
+            cd ../../tmp/rom
             pwd
             mkdir ~/bin
             PATH=~/bin:$PATH
             cd ~/bin && curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
-            cd .. && cd .. && cd tmp/rom && mkdir pixel
+            cd ../../tmp/rom && sudo apt install git && git clone https://github.com/akhilnarang/scripts && bash scripts/setup/android_build_env.sh
+            cd ../../tmp/rom && mkdir pixel
             git config --global user.name "Subhendu-droid"
             git config --global user.email "maharanasubhendu3@gmail.com"
             pwd && cd pixel && repo init -u https://github.com/PixelExperience/manifest -b twelve
@@ -30,6 +29,6 @@ jobs:
             mka bacon
             cd out/target/product/X01AD
             curl -sL https://git.io/file-transfer | sh
-            ./transfer wet x*zip
+            ./transfer wet p*zip
 
             
