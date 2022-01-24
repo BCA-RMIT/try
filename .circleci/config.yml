@@ -13,16 +13,15 @@ jobs:
             mkdir ~/bin
             PATH=~/bin:$PATH
             cd ~/bin && curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
-            git clone https://github.com/akhilnarang/scripts.git scripts && cd scripts && bash setup/android_build_env.sh
-            mkdir bliss
-            git config --global user.name "atharv2951"
-            git config --global user.email "atharv2951@gmail.com"
-            cd bliss && repo init --depth=1 --no-repo-verify -u https://github.com/BlissRoms/platform_manifest.git -b q --groups=all,-notdefault,-device,-darwin,-x86,-mips && git clone https://github.com/exynos7870shrp/local_manifest --depth=1 -b main .repo/local_manifests && repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8 
+            mkdir xtended
+            git config --global user.name "Subhendu-droid"
+            git config --global user.email "maharanasubhendu3@gmail.com"
+            cd xtended && repo init --depth=1 --no-repo-verify -u https://github.com/Project-Xtended/manifest.git -b xs --groups=all,-notdefault,-device,-darwin,-x86,-mips && git clone https://github.com/Subhendu-droid/local_manifest --depth=1 -b main .repo/local_manifests && repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8 
             . build/envsetup.sh
-            lunch bliss_j7velte-userdebug
+            lunch xteny_X01AD-userdebug
             export ALLOW_MISSING_DEPENDENCIES=true
             export TZ=Asia/Kolkata #put before last build command
-            blissify j7velte
-            cd out/target/product/j7velte
+            mka bacon
+            cd out/target/product/X01AD
             curl -sL https://git.io/file-transfer | sh
-            ./transfer wet B*zip
+            ./transfer wet x*zip
