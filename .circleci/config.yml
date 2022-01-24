@@ -8,7 +8,7 @@ jobs:
     executor: worker
     steps:
       - run:
-          name: SSH
+          name: sex
           command: |
             cd ../../tmp/rom
             pwd
