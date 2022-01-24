@@ -17,8 +17,8 @@ jobs:
             pwd
             cd ..
             pwd
-            cd dev
-            ls
-            cd nvme1n1
+            cd tmp
+            pwd
+            cd rom
             pwd
             
