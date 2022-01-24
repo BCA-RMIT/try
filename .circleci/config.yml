@@ -19,7 +19,8 @@ jobs:
             cd ../../tmp/rom && mkdir pixel
             git config --global user.name "Subhendu-droid"
             git config --global user.email "maharanasubhendu3@gmail.com"
-            yes | pwd && cd pixel && repo init -u https://github.com/PixelExperience/manifest -b twelve
+            git config --global color.ui false
+            pwd && cd pixel && repo init -u https://github.com/PixelExperience/manifest -b twelve
             repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
             git clone https://github.com/Subhendu-droid/device_asus_X01AD-1.git -b Arrow-12.0 device/asus/X01AD
             git clone https://github.com/BCA-RMIT/vendor_asus_X01AD.git -b lineage-18.1 vendor/asus/X01AD
