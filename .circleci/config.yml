@@ -12,4 +12,4 @@ jobs:
           command: |
             sudo apt install neofetch
             neofetch
-            df -h
+            pwd
