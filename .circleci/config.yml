@@ -13,3 +13,7 @@ jobs:
             sudo apt install neofetch
             neofetch
             pwd
+            sudo cd ..
+            pwd
+            sudo cd ..
+            pwd
