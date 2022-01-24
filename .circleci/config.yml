@@ -17,7 +17,7 @@ jobs:
             mkdir ~/bin
             PATH=~/bin:$PATH
             cd ~/bin && curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
-            cd rom && mkdir pixel
+            pwd && mkdir pixel
             git config --global user.name "Subhendu-droid"
             git config --global user.email "maharanasubhendu3@gmail.com"
             cd tmp && cd rom && cd pixel &&  repo init -u https://github.com/PixelExperience/manifest -b twelve
