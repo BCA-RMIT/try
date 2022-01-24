@@ -16,9 +16,13 @@ jobs:
             mkdir xtended
             git config --global user.name "Subhendu-droid"
             git config --global user.email "maharanasubhendu3@gmail.com"
-            cd xtended && repo init --depth=1 --no-repo-verify -u https://github.com/Project-Xtended/manifest.git -b xs --groups=all,-notdefault,-device,-darwin,-x86,-mips && git clone https://github.com/Subhendu-droid/local_manifest --depth=1 -b main .repo/local_manifests && repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8 
+            cd xtended &&  repo init -u https://github.com/PixelExperience/manifest -b twelve
+            repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+            git clone https://github.com/Subhendu-droid/device_asus_X01AD-1.git -b Arrow-12.0 device/asus/X01AD
+            git clone https://github.com/BCA-RMIT/vendor_asus_X01AD.git -b lineage-18.1 vendor/asus/X01AD
+            git clone https://github.com/Subhendu-droid/android_kernel_asus_X01AD.git -b lineage-18.1 kernel/asus/X01AD
             . build/envsetup.sh
-            lunch xteny_X01AD-userdebug
+            lunch aosp_X01AD-userdebug
             export ALLOW_MISSING_DEPENDENCIES=true
             export TZ=Asia/Kolkata #put before last build command
             mka bacon
