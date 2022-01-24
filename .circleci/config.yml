@@ -17,7 +17,5 @@ jobs:
             pwd
             cd ..
             pwd
-            cd dev/nvme1n1
-            pwd
-            df -h
+            ls
             
