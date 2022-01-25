@@ -11,7 +11,7 @@ jobs:
       - run:
           name: sex
           command: |
-            cd ../../tmp/rom
+            cd .. && cd .. && ls
             pwd
             mkdir ~/bin
             PATH=~/bin:$PATH
