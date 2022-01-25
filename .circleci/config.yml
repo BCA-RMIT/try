@@ -11,9 +11,6 @@ jobs:
       - run:
           name: sex
           command: |
-            mkdir ~/bin
-            PATH=~/bin:$PATH
-            cd ~/bin && curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
             sudo apt install git && git clone https://github.com/akhilnarang/scripts && bash scripts/setup/android_build_env.sh
             mkdir pixel
             git config --global user.name "Subhendu-droid"
