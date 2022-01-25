@@ -13,4 +13,4 @@ jobs:
           command: |
             cd .. && pwd && cd .. && pwd
             cd .. && ls && df -h
-            mkdir pixel && cd pixel && sudo apt install neofetch && neofetch
+            sudo mkdir pixel && cd pixel && sudo apt install neofetch && neofetch
