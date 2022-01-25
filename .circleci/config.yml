@@ -1,11 +1,12 @@
 version: 2.1
 executors:
-  worker:
-    docker:
-      - image: marvelmathesh/docker:rom
+  build:
+    machine:
+      image: ubuntu-2004:202111-02
+    resource_class: 2xlarge
 jobs:
   build:
-    executor: worker
+    executor: build
     steps:
       - run:
           name: sex
@@ -16,9 +17,20 @@ jobs:
             PATH=~/bin:$PATH
             cd ~/bin && curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
             cd ../../tmp/rom && sudo apt install git && git clone https://github.com/akhilnarang/scripts && bash scripts/setup/android_build_env.sh
-            cd ../../tmp/rom && git clone https://github.com/Subhendu-droid/android_kernel_asus_X01AD.git -b lineage-18.1 asus
-            cd asus && sudo bash x01ad-build.sh
+            cd ../../tmp/rom && mkdir pixel
+            git config --global user.name "Subhendu-droid"
+            git config --global user.email "maharanasubhendu3@gmail.com"
+            git config --global color.ui false
+            pwd && cd pixel && repo init -u https://github.com/PixelExperience/manifest -b twelve
+            repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+            git clone https://github.com/Subhendu-droid/device_asus_X01AD-1.git -b Arrow-12.0 device/asus/X01AD
+            git clone https://github.com/BCA-RMIT/vendor_asus_X01AD.git -b lineage-18.1 vendor/asus/X01AD
+            git clone https://github.com/Subhendu-droid/android_kernel_asus_X01AD.git -b lineage-18.1 kernel/asus/X01AD
+            . build/envsetup.sh
+            lunch aosp_X01AD-userdebug
+            mka bacon
+            cd out/target/product/X01AD
             curl -sL https://git.io/file-transfer | sh
-            ./transfer wet *zip
+            ./transfer wet p*zip
 
             
