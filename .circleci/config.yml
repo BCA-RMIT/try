@@ -12,4 +12,6 @@ jobs:
           name: sex
           command: |
             cd .. && pwd && cd .. && pwd
-            ls && df -h
+            cd .. && ls && df -h
+            sudo apt install neofetch
+            neofetch
