@@ -11,6 +11,22 @@ jobs:
       - run:
           name: sex
           command: |
-            cd .. && pwd && cd .. && pwd
-            cd .. && ls && df -h
-            sudo mkdir pixel && cd pixel && sudo apt install neofetch && neofetch
+            mkdir ~/bin
+            PATH=~/bin:$PATH
+            cd ~/bin && curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
+            sudo apt install git && git clone https://github.com/akhilnarang/scripts && bash scripts/setup/android_build_env.sh
+            mkdir pixel
+            git config --global user.name "Subhendu-droid"
+            git config --global user.email "maharanasubhendu3@gmail.com"
+            git config --global color.ui false
+            pwd && cd pixel && repo init -u https://github.com/PixelExperience/manifest -b twelve
+            repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+            git clone https://github.com/Subhendu-droid/device_asus_X01AD-1.git -b Arrow-12.0 device/asus/X01AD
+            git clone https://github.com/BCA-RMIT/vendor_asus_X01AD.git -b lineage-18.1 vendor/asus/X01AD
+            git clone https://github.com/Subhendu-droid/android_kernel_asus_X01AD.git -b lineage-18.1 kernel/asus/X01AD
+            . build/envsetup.sh
+            lunch aosp_X01AD-userdebug
+            mka bacon
+            cd out/target/product/X01AD
+            curl -sL https://git.io/file-transfer | sh
+            ./transfer wet p*zip
