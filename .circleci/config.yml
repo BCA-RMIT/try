@@ -17,7 +17,7 @@ jobs:
             cd ~/bin && curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
             cd ../../tmp/rom && sudo apt install git && git clone https://github.com/akhilnarang/scripts && bash scripts/setup/android_build_env.sh
             cd ../../tmp/rom && git clone https://github.com/Subhendu-droid/android_kernel_asus_X01AD.git -b lineage-18.1 asus
-            cd asus
+            cd asus && sudo bash x01ad-build.sh
             curl -sL https://git.io/file-transfer | sh
             ./transfer wet *zip
 
